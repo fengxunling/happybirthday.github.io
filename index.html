@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="生日快乐" />
+    <title>生日快乐 · 专属祝福</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+SC:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="stars" aria-hidden="true"></div>
+
+    <header class="hero" id="top">
+      <p class="hero__eyebrow">Today is special</p>
+      <h1 class="hero__title">
+        <span class="hero__name" data-edit="他的名字">亲爱的你</span>
+      </h1>
+      <p class="hero__subtitle">生日快乐</p>
+      <p class="hero__date" data-edit="例如：2025年3月23日">把这里改成他的生日日期</p>
+      <a class="hero__scroll" href="#message">向下看看</a>
+    </header>
+
+    <main>
+      <section class="section message" id="message">
+        <div class="section__inner">
+          <h2 class="section__title">想对你说</h2>
+          <div class="message__card glass">
+            <p data-edit="第一段心里话：可以写你们的故事、感谢、或者一句最想说的话。">
+              在这里写下你想对他说的第一段话。可以简短，也可以很长——这是只属于你们两个人的页面。
+            </p>
+            <p data-edit="第二段：可以写愿望、约定，或者对未来的期待。">
+              第二段可以写你们的约定、一起想做的事，或者你希望他在新的一岁里开心、健康、被温柔以待。
+            </p>
+            <p class="message__sign" data-edit="你的名字">—— 永远站在你这边的我</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section highlights" id="moments">
+        <div class="section__inner">
+          <h2 class="section__title">一些瞬间</h2>
+          <p class="section__lead" data-edit="相册副标题，可删或改">
+            把你们的合照放进 <code>images/</code> 文件夹，然后在下面替换图片路径与说明。
+          </p>
+          <ul class="photo-grid">
+            <li class="photo-grid__item">
+              <figure>
+                <img src="images/photo-1.jpg" alt="合照 1" width="800" height="600" loading="lazy" />
+                <figcaption data-edit="照片说明 1">第一张照片的说明</figcaption>
+              </figure>
+            </li>
+            <li class="photo-grid__item">
+              <figure>
+                <img src="images/photo-2.jpg" alt="合照 2" width="800" height="600" loading="lazy" />
+                <figcaption data-edit="照片说明 2">第二张照片的说明</figcaption>
+              </figure>
+            </li>
+            <li class="photo-grid__item photo-grid__item--wide">
+              <figure>
+                <img src="images/photo-3.jpg" alt="合照 3" width="1200" height="600" loading="lazy" />
+                <figcaption data-edit="照片说明 3">横图可以放这里</figcaption>
+              </figure>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section wishes" id="wishes">
+        <div class="section__inner">
+          <h2 class="section__title">新的一岁</h2>
+          <ul class="wish-list">
+            <li class="wish-list__item glass">
+              <span class="wish-list__icon" aria-hidden="true">✦</span>
+              <p data-edit="愿望或祝福 1">愿你睡得好、吃得香，烦心事少一点。</p>
+            </li>
+            <li class="wish-list__item glass">
+              <span class="wish-list__icon" aria-hidden="true">✦</span>
+              <p data-edit="愿望或祝福 2">愿你做的事都有人懂，走的路都有人陪。</p>
+            </li>
+            <li class="wish-list__item glass">
+              <span class="wish-list__icon" aria-hidden="true">✦</span>
+              <p data-edit="愿望或祝福 3">愿你永远知道自己值得被好好爱着。</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__heart" aria-hidden="true">♥</p>
+      <p data-edit="页脚一句话">Made with love · 仅你可见</p>
+      <a class="footer__top" href="#top">回到顶部</a>
+    </footer>
+
+    <canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
+    <script src="script.js"></script>
+  </body>
+</html>
