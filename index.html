@@ -71,314 +71,224 @@
         </div>
       </section>
 
-      <section class="section world-map-section" id="world">
-        <div class="section__inner">
-          <h2 class="section__title">我们的地球</h2>
+      <section class="section places" id="places">
+        <div class="section__inner section__inner--places">
+          <h2 class="section__title">一起走过的城市</h2>
           <p class="section__lead">
-            投影为等距圆柱示意（经度 + 180 = 横坐标，90 − 纬度 = 纵坐标）。标点优先于底色陆地：改文案用
-            <code>data-map-label</code> / <code>data-map-tip</code>；坐标改对应
-            <code>transform=&quot;translate(x,y)&quot;</code>。
+            把照片放进 <code>images/places/</code>，文件名用下面每张图对应的英文名；右栏直接改文字即可。
           </p>
-          <div class="world-map glass" id="world-map">
-            <svg
-              class="world-map__svg"
-              viewBox="0 0 360 180"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-label="足迹地图：城市标点可悬浮查看"
-            >
-              <title>世界地图与城市足迹</title>
-              <!-- 底色陆地：与 200×100 示意等比放大到 360×180 -->
-              <g class="map-continents" transform="scale(1.8)">
-                <path
-                  class="map-region"
-                  data-map-label="北美洲"
-                  data-map-tip="这片大陆上，有我们走过的波士顿、纽约，还有西海岸的阳光。"
-                  d="M 10,14 L 52,10 L 62,24 L 58,42 L 48,48 L 34,44 L 20,34 L 12,22 Z"
-                />
-                <path
-                  class="map-region"
-                  data-map-label="南美洲"
-                  data-map-tip="总有一天继续往南，把没说完的路都走完。"
-                  d="M 44,48 L 56,45 L 60,58 L 56,78 L 48,84 L 40,74 L 38,58 Z"
-                />
-                <path
-                  class="map-region"
-                  data-map-label="欧洲"
-                  data-map-tip="从荷兰的风车到阿尔卑斯的站台，欧洲是我们的「长期副本」之一。"
-                  d="M 84,22 L 100,18 L 106,30 L 102,40 L 90,42 L 84,34 Z"
-                />
-                <path
-                  class="map-region"
-                  data-map-label="非洲"
-                  data-map-tip="还没一起踏上过，先记在下一章的地图里。"
-                  d="M 88,40 L 108,38 L 114,52 L 108,72 L 96,78 L 86,64 L 86,50 Z"
-                />
-                <path
-                  class="map-region"
-                  data-map-label="亚洲"
-                  data-map-tip="从首尔到彩云之南，从长三角到闽南，家的形状有很多种。"
-                  d="M 102,20 L 162,14 L 178,30 L 180,50 L 170,58 L 140,54 L 112,44 L 100,30 Z"
-                />
-                <path
-                  class="map-region"
-                  data-map-label="大洋洲"
-                  data-map-tip="南半球的袋鼠和海风，留给未来的空白页。"
-                  d="M 134,52 L 176,48 L 182,66 L 170,78 L 138,74 L 128,60 Z"
-                />
-              </g>
-
-              <!-- 城市标点：translate(180+经度, 90-纬度)，单位与 viewBox 一致 -->
-              <g class="map-markers" fill="none">
-                <!-- 荷兰 -->
-                <g
-                  class="map-marker"
-                  transform="translate(184.9, 37.63)"
-                  data-map-label="荷兰 · 阿姆斯特丹"
-                  data-map-tip="运河、博物馆和自行车铃声——在这里留下的步子，我都记得。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(184.48, 38.08)"
-                  data-map-label="荷兰 · 鹿特丹"
-                  data-map-tip="港口与现代建筑的天际线，和你一起看很特别。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <!-- 瑞士 -->
-                <g
-                  class="map-marker"
-                  transform="translate(188.54, 42.62)"
-                  data-map-label="瑞士 · 苏黎世"
-                  data-map-tip="第一次长期出国的起点，忐忑和兴奋都和你绑在一起。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(187.45, 43.05)"
-                  data-map-label="瑞士 · 伯尔尼"
-                  data-map-tip="联邦之城、老城与钟塔，慢下来的时候正好牵着手。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(188.31, 42.95)"
-                  data-map-label="瑞士 · 卢塞恩"
-                  data-map-tip="湖光山色像明信片，但身边的人比风景更难得。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(186.63, 43.48)"
-                  data-map-label="瑞士 · 洛桑"
-                  data-map-tip="莱芒湖畔的风，适合用来发呆和说废话。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(186.14, 43.8)"
-                  data-map-label="瑞士 · 日内瓦"
-                  data-map-tip="联合国与喷泉的城市，和世界接轨的路上也有你。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <!-- 奥地利（以维也纳为代表标点） -->
-                <g
-                  class="map-marker"
-                  transform="translate(196.37, 41.79)"
-                  data-map-label="奥地利"
-                  data-map-tip="阿尔卑斯的余韵、咖啡与音乐——这一站是「中欧」的温柔注脚。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <!-- 德国 -->
-                <g
-                  class="map-marker"
-                  transform="translate(193.41, 37.48)"
-                  data-map-label="德国 · 柏林"
-                  data-map-tip="历史与墙、艺术与夜，在柏林的街角都显得格外鲜明。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(191.58, 41.86)"
-                  data-map-label="德国 · 慕尼黑"
-                  data-map-tip="啤酒、宫殿与拜仁的天空，和你一起才算完整味道。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(192.37, 38.66)"
-                  data-map-label="德国 · 莱比锡"
-                  data-map-tip="巴赫与书展之城，东德记忆里也有我们的一小段路。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <!-- 韩国 -->
-                <g
-                  class="map-marker"
-                  transform="translate(306.98, 52.43)"
-                  data-map-label="韩国 · 首尔"
-                  data-map-tip="汉江、咖啡与霓虹，异国的日常因为有你而不陌生。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <!-- 中国 -->
-                <g
-                  class="map-marker"
-                  transform="translate(293.63, 55.25)"
-                  data-map-label="中国 · 郑州"
-                  data-map-tip="中原的枢纽，也是故事里绕不开的一站。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(294.06, 67.46)"
-                  data-map-label="中国 · 深圳"
-                  data-map-tip="二院收数据也好，夜宵也好，这座城有我们实打实的生活。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(296.41, 50.1)"
-                  data-map-label="中国 · 北京"
-                  data-map-tip="胡同与环路之间，是首都，也是「我们一起待过」的坐标。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(301.47, 58.77)"
-                  data-map-label="中国 · 上海"
-                  data-map-tip="外滩的风、梧桐区的小路，繁华里也想和你慢慢走。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(293.26, 66.87)"
-                  data-map-label="中国 · 广州"
-                  data-map-tip="早茶与湿热的风，南国的胃和心都记得你。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(300.35, 59.05)"
-                  data-map-label="中国 · 苏州"
-                  data-map-tip="园林与水巷，江南的柔是你陪我看才更动人。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(290.3, 64.73)"
-                  data-map-label="中国 · 桂林"
-                  data-map-tip="山水甲天下，而你是画外我最想落款的名字。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(280.23, 64.39)"
-                  data-map-label="中国 · 大理"
-                  data-map-tip="苍山洱海的风，适合用来发誓「下次还要一起来」。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(281.05, 62.95)"
-                  data-map-label="中国 · 丽江"
-                  data-map-tip="古城石板路与雪山轮廓，高原阳光里你笑得特别好看。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(282.71, 64.95)"
-                  data-map-label="中国 · 昆明"
-                  data-map-tip="春城与中转站，也是通往更多云南记忆的入口。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(279.71, 62.17)"
-                  data-map-label="中国 · 香格里拉"
-                  data-map-tip="离天空很近的地方，和你一起呼吸过稀薄的甜。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(298.09, 65.52)"
-                  data-map-label="中国 · 厦门"
-                  data-map-tip="鼓浪屿的浪与闽南的慢，海风里全是放松的你。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(299.3, 63.93)"
-                  data-map-label="中国 · 福州"
-                  data-map-tip="榕城与三坊七巷，福建的故事从这里铺开。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(298.68, 65.13)"
-                  data-map-label="中国 · 泉州"
-                  data-map-tip="海上丝绸之路的起点，香火与红砖里都是人间烟火。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(296.68, 66.65)"
-                  data-map-label="中国 · 潮汕"
-                  data-map-tip="牛肉火锅与工夫茶，胃和心都要被这一带宠坏。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <!-- 美国 -->
-                <g
-                  class="map-marker"
-                  transform="translate(108.94, 47.64)"
-                  data-map-label="美国 · 波士顿"
-                  data-map-tip="红砖与学府之城，新英格兰的冷天里也有暖的回忆。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(62.84, 57.28)"
-                  data-map-label="美国 · 圣地亚哥"
-                  data-map-tip="太平洋岸的棕榈与阳光，西海岸的温柔一页。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-                <g
-                  class="map-marker"
-                  transform="translate(105.99, 49.29)"
-                  data-map-label="美国 · 纽约"
-                  data-map-tip="曼哈顿的灯海与地铁轰鸣，世界很大，幸好身边是你。"
-                >
-                  <circle class="map-marker__hit" r="5" />
-                </g>
-              </g>
-            </svg>
-          </div>
+          <ul class="place-list">
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/nl-amsterdam.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">荷兰 · 阿姆斯特丹 <span class="place-list__file">nl-amsterdam.jpg</span></h3>
+                <p class="place-list__text" data-edit="阿姆斯特丹">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/nl-rotterdam.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">荷兰 · 鹿特丹 <span class="place-list__file">nl-rotterdam.jpg</span></h3>
+                <p class="place-list__text" data-edit="鹿特丹">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/ch-zurich.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">瑞士 · 苏黎世 <span class="place-list__file">ch-zurich.jpg</span></h3>
+                <p class="place-list__text" data-edit="苏黎世">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/ch-bern.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">瑞士 · 伯尔尼 <span class="place-list__file">ch-bern.jpg</span></h3>
+                <p class="place-list__text" data-edit="伯尔尼">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/ch-lucerne.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">瑞士 · 卢塞恩 <span class="place-list__file">ch-lucerne.jpg</span></h3>
+                <p class="place-list__text" data-edit="卢塞恩">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/ch-lausanne.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">瑞士 · 洛桑 <span class="place-list__file">ch-lausanne.jpg</span></h3>
+                <p class="place-list__text" data-edit="洛桑">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/ch-geneva.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">瑞士 · 日内瓦 <span class="place-list__file">ch-geneva.jpg</span></h3>
+                <p class="place-list__text" data-edit="日内瓦">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/at-austria.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">奥地利 <span class="place-list__file">at-austria.jpg</span></h3>
+                <p class="place-list__text" data-edit="奥地利">在这里写你们的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/de-berlin.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">德国 · 柏林 <span class="place-list__file">de-berlin.jpg</span></h3>
+                <p class="place-list__text" data-edit="柏林">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/de-munich.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">德国 · 慕尼黑 <span class="place-list__file">de-munich.jpg</span></h3>
+                <p class="place-list__text" data-edit="慕尼黑">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/de-leipzig.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">德国 · 莱比锡 <span class="place-list__file">de-leipzig.jpg</span></h3>
+                <p class="place-list__text" data-edit="莱比锡">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/kr-seoul.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">韩国 · 首尔 <span class="place-list__file">kr-seoul.jpg</span></h3>
+                <p class="place-list__text" data-edit="首尔">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/cn-zhengzhou.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">中国 · 郑州 <span class="place-list__file">cn-zhengzhou.jpg</span></h3>
+                <p class="place-list__text" data-edit="郑州">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/cn-shenzhen.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">中国 · 深圳 <span class="place-list__file">cn-shenzhen.jpg</span></h3>
+                <p class="place-list__text" data-edit="深圳">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/cn-beijing.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">中国 · 北京 <span class="place-list__file">cn-beijing.jpg</span></h3>
+                <p class="place-list__text" data-edit="北京">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/cn-shanghai.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">中国 · 上海 <span class="place-list__file">cn-shanghai.jpg</span></h3>
+                <p class="place-list__text" data-edit="上海">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/cn-guangzhou.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">中国 · 广州 <span class="place-list__file">cn-guangzhou.jpg</span></h3>
+                <p class="place-list__text" data-edit="广州">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/cn-suzhou.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">中国 · 苏州 <span class="place-list__file">cn-suzhou.jpg</span></h3>
+                <p class="place-list__text" data-edit="苏州">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/cn-guilin.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">中国 · 桂林 <span class="place-list__file">cn-guilin.jpg</span></h3>
+                <p class="place-list__text" data-edit="桂林">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/cn-dali.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">中国 · 大理 <span class="place-list__file">cn-dali.jpg</span></h3>
+                <p class="place-list__text" data-edit="大理">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/cn-lijiang.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">中国 · 丽江 <span class="place-list__file">cn-lijiang.jpg</span></h3>
+                <p class="place-list__text" data-edit="丽江">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/cn-kunming.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">中国 · 昆明 <span class="place-list__file">cn-kunming.jpg</span></h3>
+                <p class="place-list__text" data-edit="昆明">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/cn-shangri-la.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">中国 · 香格里拉 <span class="place-list__file">cn-shangri-la.jpg</span></h3>
+                <p class="place-list__text" data-edit="香格里拉">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/cn-xiamen.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">中国 · 厦门 <span class="place-list__file">cn-xiamen.jpg</span></h3>
+                <p class="place-list__text" data-edit="厦门">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/cn-fuzhou.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">中国 · 福州 <span class="place-list__file">cn-fuzhou.jpg</span></h3>
+                <p class="place-list__text" data-edit="福州">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/cn-quanzhou.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">中国 · 泉州 <span class="place-list__file">cn-quanzhou.jpg</span></h3>
+                <p class="place-list__text" data-edit="泉州">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/cn-chaoshan.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">中国 · 潮汕 <span class="place-list__file">cn-chaoshan.jpg</span></h3>
+                <p class="place-list__text" data-edit="潮汕">在这里写你们在这片地区的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/us-boston.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">美国 · 波士顿 <span class="place-list__file">us-boston.jpg</span></h3>
+                <p class="place-list__text" data-edit="波士顿">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/us-san-diego.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">美国 · 圣地亚哥 <span class="place-list__file">us-san-diego.jpg</span></h3>
+                <p class="place-list__text" data-edit="圣地亚哥">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+            <li class="place-list__item glass">
+              <div class="place-list__thumb"><img src="images/places/us-new-york.jpg" alt="" width="400" height="300" loading="lazy" decoding="async" /></div>
+              <div class="place-list__body">
+                <h3 class="place-list__name">美国 · 纽约 <span class="place-list__file">us-new-york.jpg</span></h3>
+                <p class="place-list__text" data-edit="纽约">在这里写你们在这座城市的故事……</p>
+              </div>
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -408,11 +318,6 @@
       <p data-edit="页脚一句话">Made with love · 仅你可见</p>
       <a class="footer__top" href="#top">回到顶部</a>
     </footer>
-
-    <div id="map-tooltip" class="map-tooltip" hidden role="tooltip">
-      <strong class="map-tooltip__label"></strong>
-      <p class="map-tooltip__text"></p>
-    </div>
 
     <canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
     <script src="script.js"></script>

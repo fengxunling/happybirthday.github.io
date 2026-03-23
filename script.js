@@ -83,92 +83,12 @@
       this.alt = "";
     });
   });
-})();
 
-/**
- * 世界地图：优先检测城市标点，其次整块陆地；悬浮说明跟随指针
- */
-(function () {
-  const wrap = document.getElementById("world-map");
-  const tooltip = document.getElementById("map-tooltip");
-  if (!wrap || !tooltip) return;
-
-  const labelEl = tooltip.querySelector(".map-tooltip__label");
-  const textEl = tooltip.querySelector(".map-tooltip__text");
-  let lastHit = null;
-
-  function clientXY(e) {
-    if (e.touches && e.touches.length) {
-      return { x: e.touches[0].clientX, y: e.touches[0].clientY };
-    }
-    return { x: e.clientX, y: e.clientY };
-  }
-
-  function hitAtPoint(x, y) {
-    const stack = document.elementsFromPoint(x, y);
-    for (let i = 0; i < stack.length; i++) {
-      const el = stack[i];
-      if (!wrap.contains(el)) continue;
-      const marker = el.closest && el.closest(".map-marker");
-      if (marker && wrap.contains(marker)) return marker;
-      if (el.classList && el.classList.contains("map-region")) return el;
-      const region = el.closest && el.closest(".map-region");
-      if (region && wrap.contains(region)) return region;
-    }
-    return null;
-  }
-
-  function setHovered(node) {
-    if (lastHit === node) return;
-    wrap.querySelectorAll(".map-region, .map-marker").forEach((n) => n.classList.remove("is-hovered"));
-    if (node) node.classList.add("is-hovered");
-    lastHit = node;
-  }
-
-  function positionTooltip(x, y) {
-    const pad = 14;
-    const margin = 10;
-    tooltip.removeAttribute("hidden");
-    const tw = tooltip.offsetWidth;
-    const th = tooltip.offsetHeight;
-    let left = x + pad;
-    let top = y + pad;
-    if (left + tw > window.innerWidth - margin) left = x - tw - pad;
-    if (top + th > window.innerHeight - margin) top = y - th - pad;
-    left = Math.max(margin, Math.min(left, window.innerWidth - tw - margin));
-    top = Math.max(margin, Math.min(top, window.innerHeight - th - margin));
-    tooltip.style.left = left + "px";
-    tooltip.style.top = top + "px";
-  }
-
-  function onPointerLike(e) {
-    const { x, y } = clientXY(e);
-    const hit = hitAtPoint(x, y);
-    if (hit) {
-      const label = hit.getAttribute("data-map-label") || "";
-      const tip = hit.getAttribute("data-map-tip") || "";
-      labelEl.textContent = label;
-      textEl.textContent = tip;
-      labelEl.hidden = !label;
-      setHovered(hit);
-      positionTooltip(x, y);
-    } else {
-      setHovered(null);
-      tooltip.setAttribute("hidden", "");
-    }
-  }
-
-  wrap.addEventListener("mousemove", onPointerLike);
-  wrap.addEventListener("touchstart", onPointerLike, { passive: true });
-  wrap.addEventListener("touchmove", onPointerLike, { passive: true });
-
-  wrap.addEventListener("mouseleave", () => {
-    setHovered(null);
-    tooltip.setAttribute("hidden", "");
-  });
-
-  wrap.addEventListener("touchend", () => {
-    setHovered(null);
-    tooltip.setAttribute("hidden", "");
+  document.querySelectorAll(".place-list__thumb img").forEach((img) => {
+    img.addEventListener("error", function () {
+      this.style.opacity = "0";
+      const thumb = this.closest(".place-list__thumb");
+      if (thumb) thumb.classList.add("place-list__thumb--empty");
+    });
   });
 })();

@@ -1,0 +1,1 @@
+nl-amsterdam.jpg、nl-rotterdam.jpg、ch-zurich.jpg、ch-bern.jpg、ch-lucerne.jpg、ch-lausanne.jpg、ch-geneva.jpg、at-austria.jpg、de-berlin.jpg、de-munich.jpg、de-leipzig.jpg、kr-seoul.jpg，以及 cn-zhengzhou.jpg … cn-chaoshan.jpg，再加 us-boston.jpg、us-san-diego.jpg、us-new-york.jpg（与页面里写的完全一致）。

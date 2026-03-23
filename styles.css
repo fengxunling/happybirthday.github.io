@@ -331,8 +331,12 @@ body {
   z-index: 2;
 }
 
-/* ========== 交互世界地图 ========== */
-.world-map-section .section__lead code {
+/* ========== 城市列表（本地图 images/places/） ========== */
+.section__inner--places {
+  max-width: 960px;
+}
+
+.places .section__lead code {
   font-size: 0.85em;
   padding: 0.15em 0.4em;
   background: var(--glass);
@@ -340,86 +344,79 @@ body {
   border: 1px solid var(--glass-border);
 }
 
-.world-map {
-  padding: clamp(1rem, 3vw, 1.75rem);
-  border-radius: var(--radius);
-  overflow: hidden;
+.place-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-.world-map__svg {
+.place-list__item {
+  display: grid;
+  grid-template-columns: minmax(140px, 280px) 1fr;
+  gap: clamp(1rem, 3vw, 1.75rem);
+  align-items: start;
+  padding: clamp(1rem, 2.5vw, 1.35rem);
+}
+
+@media (max-width: 640px) {
+  .place-list__item {
+    grid-template-columns: 1fr;
+  }
+}
+
+.place-list__thumb {
+  position: relative;
+  border-radius: calc(var(--radius) - 4px);
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(160deg, var(--bg-mid), #221a2e);
+  aspect-ratio: 4 / 3;
+}
+
+.place-list__thumb--empty::after {
+  content: "待上传照片";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.place-list__thumb img {
   display: block;
   width: 100%;
-  height: auto;
-  max-height: min(58vh, 520px);
-  margin: 0 auto;
+  height: 100%;
+  object-fit: cover;
 }
 
-.world-map__svg .map-region {
-  fill: rgba(232, 184, 109, 0.16);
-  stroke: rgba(232, 184, 109, 0.42);
-  stroke-width: 0.45;
-  vector-effect: non-scaling-stroke;
-  paint-order: stroke fill;
-  cursor: crosshair;
-  transition: fill 0.2s ease, stroke 0.2s ease, filter 0.2s ease;
-}
-
-.world-map__svg .map-region.is-hovered {
-  fill: rgba(232, 184, 109, 0.38);
-  stroke: var(--accent);
-  stroke-width: 0.55;
-  filter: drop-shadow(0 0 8px var(--accent-soft));
-}
-
-.world-map__svg .map-marker__hit {
-  fill: rgba(232, 184, 109, 0.42);
-  stroke: rgba(245, 240, 235, 0.85);
-  stroke-width: 0.55;
-  vector-effect: non-scaling-stroke;
-  cursor: crosshair;
-  transition: fill 0.2s ease, stroke 0.2s ease, transform 0.2s ease, filter 0.2s ease;
-}
-
-.world-map__svg .map-marker.is-hovered .map-marker__hit {
-  fill: rgba(232, 184, 109, 0.85);
-  stroke: var(--accent);
-  filter: drop-shadow(0 0 10px var(--accent-soft));
-}
-
-.map-tooltip {
-  position: fixed;
-  z-index: 50;
-  left: 0;
-  top: 0;
-  max-width: min(380px, calc(100vw - 24px));
-  padding: 0.85rem 1.1rem;
-  margin: 0;
-  pointer-events: none;
-  font-size: 0.9rem;
-  line-height: 1.55;
+.place-list__name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
   color: var(--text);
-  background: rgba(26, 20, 36, 0.92);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
-.map-tooltip[hidden] {
-  display: none !important;
-}
-
-.map-tooltip__label {
+.place-list__file {
   display: block;
-  font-size: 0.8rem;
-  letter-spacing: 0.06em;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
   color: var(--accent);
-  margin: 0 0 0.35rem;
+  letter-spacing: 0.02em;
+  margin-top: 0.25rem;
 }
 
-.map-tooltip__text {
+.place-list__text {
   margin: 0;
   color: var(--text-muted);
-  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.65;
 }
