@@ -216,11 +216,7 @@ body {
 
 @media (min-width: 640px) {
   .photo-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .photo-grid__item--wide {
-    grid-column: span 2;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -240,10 +236,6 @@ body {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   transition: transform 0.6s ease;
-}
-
-.photo-grid__item--wide img {
-  aspect-ratio: 21 / 9;
 }
 
 .photo-grid__item:hover img {
@@ -337,4 +329,97 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 2;
+}
+
+/* ========== 交互世界地图 ========== */
+.world-map-section .section__lead code {
+  font-size: 0.85em;
+  padding: 0.15em 0.4em;
+  background: var(--glass);
+  border-radius: 6px;
+  border: 1px solid var(--glass-border);
+}
+
+.world-map {
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.world-map__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(58vh, 520px);
+  margin: 0 auto;
+}
+
+.world-map__svg .map-region {
+  fill: rgba(232, 184, 109, 0.16);
+  stroke: rgba(232, 184, 109, 0.42);
+  stroke-width: 0.45;
+  vector-effect: non-scaling-stroke;
+  paint-order: stroke fill;
+  cursor: crosshair;
+  transition: fill 0.2s ease, stroke 0.2s ease, filter 0.2s ease;
+}
+
+.world-map__svg .map-region.is-hovered {
+  fill: rgba(232, 184, 109, 0.38);
+  stroke: var(--accent);
+  stroke-width: 0.55;
+  filter: drop-shadow(0 0 8px var(--accent-soft));
+}
+
+.world-map__svg .map-marker__hit {
+  fill: rgba(232, 184, 109, 0.42);
+  stroke: rgba(245, 240, 235, 0.85);
+  stroke-width: 0.55;
+  vector-effect: non-scaling-stroke;
+  cursor: crosshair;
+  transition: fill 0.2s ease, stroke 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+}
+
+.world-map__svg .map-marker.is-hovered .map-marker__hit {
+  fill: rgba(232, 184, 109, 0.85);
+  stroke: var(--accent);
+  filter: drop-shadow(0 0 10px var(--accent-soft));
+}
+
+.map-tooltip {
+  position: fixed;
+  z-index: 50;
+  left: 0;
+  top: 0;
+  max-width: min(380px, calc(100vw - 24px));
+  padding: 0.85rem 1.1rem;
+  margin: 0;
+  pointer-events: none;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text);
+  background: rgba(26, 20, 36, 0.92);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.map-tooltip[hidden] {
+  display: none !important;
+}
+
+.map-tooltip__label {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin: 0 0 0.35rem;
+}
+
+.map-tooltip__text {
+  margin: 0;
+  color: var(--text-muted);
+  font-weight: 400;
 }
