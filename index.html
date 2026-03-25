@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="生日快乐" />
-    <title>生日快乐 · 专属祝福</title>
+    <title>祝世界上最可爱的毛咪生日快乐！</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -285,6 +285,27 @@
     </footer>
 
     <canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
+
+    <audio
+      id="bgm"
+      src="audio/bgm.mp3"
+      autoplay
+      loop
+      preload="auto"
+      playsinline
+    ></audio>
+    <button
+      type="button"
+      id="music-toggle"
+      class="music-toggle glass"
+      aria-pressed="false"
+      aria-label="播放背景音乐"
+      title="背景音乐"
+    >
+      <span class="music-toggle__icon music-toggle__icon--play" aria-hidden="true">♪</span>
+      <span class="music-toggle__icon music-toggle__icon--pause" aria-hidden="true">❚❚</span>
+    </button>
+
     <script src="script.js"></script>
   </body>
 </html>

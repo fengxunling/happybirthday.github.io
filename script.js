@@ -92,3 +92,64 @@
     });
   });
 })();
+
+/**
+ * 背景音乐：打开页面即尝试自动播放并循环（loop）。
+ * 部分浏览器会拦截「未经过点击」的有声自动播放，此时可用右下角按钮或任意一次点击页面启动。
+ */
+(function () {
+  const audio = document.getElementById("bgm");
+  const btn = document.getElementById("music-toggle");
+  if (!audio || !btn) return;
+
+  audio.volume = 0.55;
+  audio.loop = true;
+
+  const labelPlay = "播放背景音乐";
+  const labelPause = "暂停背景音乐";
+
+  function syncUi() {
+    const playing = !audio.paused;
+    btn.classList.toggle("music-toggle--playing", playing);
+    btn.setAttribute("aria-pressed", playing ? "true" : "false");
+    btn.setAttribute("aria-label", playing ? labelPause : labelPlay);
+  }
+
+  function tryPlay() {
+    return audio.play().then(syncUi).catch(syncUi);
+  }
+
+  btn.addEventListener("click", function () {
+    if (audio.paused) {
+      tryPlay();
+    } else {
+      audio.pause();
+      syncUi();
+    }
+  });
+
+  audio.addEventListener("play", syncUi);
+  audio.addEventListener("pause", syncUi);
+
+  // 自动播放被拦截时，用户第一次点击/触摸页面后开始播放（仍可用按钮控制）
+  let gestureUnlockAttached = false;
+  function attachGestureUnlock() {
+    if (gestureUnlockAttached || !audio.paused) return;
+    gestureUnlockAttached = true;
+    const once = function () {
+      tryPlay();
+      document.removeEventListener("click", once);
+      document.removeEventListener("touchstart", once);
+    };
+    document.addEventListener("click", once, { passive: true });
+    document.addEventListener("touchstart", once, { passive: true });
+  }
+
+  window.addEventListener("load", function () {
+    tryPlay().then(function () {
+      if (audio.paused) attachGestureUnlock();
+    });
+  });
+
+  syncUi();
+})();

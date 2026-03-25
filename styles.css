@@ -420,3 +420,61 @@ body {
   font-size: 1rem;
   line-height: 1.65;
 }
+
+/* 背景音乐开关（需用户点击播放，符合浏览器自动播放策略） */
+.music-toggle {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 50;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--accent);
+  font-size: 1.35rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  transition: color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.music-toggle:hover {
+  color: #f5d49a;
+  transform: scale(1.06);
+  box-shadow: 0 6px 28px rgba(232, 184, 109, 0.2);
+}
+
+.music-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.music-toggle__icon {
+  position: absolute;
+  transition: opacity 0.2s ease;
+}
+
+.music-toggle__icon--pause {
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.music-toggle--playing .music-toggle__icon--play {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.music-toggle--playing .music-toggle__icon--pause {
+  opacity: 1;
+}
+
+.music-toggle--playing {
+  color: var(--text-muted);
+}
