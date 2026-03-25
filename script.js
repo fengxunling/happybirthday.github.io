@@ -153,3 +153,38 @@
 
   syncUi();
 })();
+
+/**
+ * 通用“出现动画”（图片/文字区域滚动进入视口才出现）
+ */
+(function () {
+  const targets = Array.from(
+    document.querySelectorAll(
+      ".photo-grid__item, .place-list__item, .wish-list__item"
+    )
+  );
+  if (!targets.length) return;
+
+  // 先标记为隐藏态，并设置错落延迟
+  targets.forEach((el, i) => {
+    el.classList.add("reveal-el");
+    // 控制延迟不要太大，避免后面元素拖太久
+    const delayMs = Math.min(i, 25) * 120;
+    el.style.setProperty("--reveal-delay", `${delayMs}ms`);
+  });
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add("revealed");
+        io.unobserve(entry.target);
+      }
+    },
+    {
+      threshold: 0.15,
+    }
+  );
+
+  targets.forEach((el) => io.observe(el));
+})();
